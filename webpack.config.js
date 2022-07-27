@@ -3,7 +3,15 @@ const path = require("path");
 const config = {
   mode: "development",
   entry: {
-    myApp: ["./src/index.js"],
+    myApp: ["./src/css/style.css", "./src/index.js"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
   output: {
     path: path.resolve(__dirname, "build/"),
