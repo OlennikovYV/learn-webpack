@@ -1,2 +1,2 @@
-# learn-webpack
+# Webpack
 Learning webpack is a module bundler
