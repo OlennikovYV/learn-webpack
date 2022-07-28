@@ -4,7 +4,7 @@
   "description": "Learning webpack is a module bundler",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "cross-env --env.NODE_ENV=prod webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/OlennikovYV/learn-webpack#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
+    "mini-css-extract-plugin": "^2.6.1",
     "style-loader": "^3.3.1",
     "webpack-cli": "^4.10.0"
   },
