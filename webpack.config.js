@@ -3,6 +3,9 @@ const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const cdn = require("./src/js/cdn/cdn");
 
 const env = process.env.NODE_ENV;
 const cssLoaders =
@@ -13,6 +16,9 @@ const cssLoaders =
 const config = {
   entry: {
     myApp: ["./src/css/style.css", "./src/index.js"],
+  },
+  externals: {
+    lodash: "_",
   },
   mode: "development",
   module: {
@@ -28,6 +34,11 @@ const config = {
     filename: "bundle.js",
   },
   plugins: [
+    new BundleAnalyzerPlugin({
+      openAnalyzer: true,
+      analyzeMode: "static",
+      reportFilename: "development_report.html",
+    }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
@@ -39,6 +50,7 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       inject: "body",
+      cdn,
       minify: {
         removeComments: true,
         collapseWhitespace: false,
