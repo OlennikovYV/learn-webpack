@@ -1,32 +1,33 @@
 {
-  "name": "learn-webpack",
-  "version": "1.0.0",
-  "description": "Learning webpack is a module bundler",
-  "main": "webpack.config.js",
-  "scripts": {
-    "build": "cross-env --env.NODE_ENV=prod webpack --config webpack.config.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OlennikovYV/learn-webpack.git"
-  },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/OlennikovYV/learn-webpack/issues"
   },
-  "homepage": "https://github.com/OlennikovYV/learn-webpack#readme",
+  "dependencies": {
+    "webpack": "^5.74.0"
+  },
+  "description": "Learning webpack is a module bundler",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "style-loader": "^3.3.1",
     "webpack-cli": "^4.10.0"
   },
-  "dependencies": {
-    "webpack": "^5.74.0"
-  }
+  "homepage": "https://github.com/OlennikovYV/learn-webpack#readme",
+  "keywords": [],
+  "license": "ISC",
+  "main": "webpack.config.js",
+  "name": "learn-webpack",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlennikovYV/learn-webpack.git"
+  },
+  "scripts": {
+    "build": "cross-env --env.NODE_ENV=prod webpack --config webpack.config.js"
+  },
+  "version": "1.0.0"
 }

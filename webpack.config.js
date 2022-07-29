@@ -2,6 +2,7 @@ const path = require("path");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const env = process.env.NODE_ENV;
 const cssLoaders =
@@ -10,10 +11,10 @@ const cssLoaders =
     : ["style-loader", "css-loader"];
 
 const config = {
-  mode: "development",
   entry: {
     myApp: ["./src/css/style.css", "./src/index.js"],
   },
+  mode: "development",
   module: {
     rules: [
       {
@@ -22,10 +23,11 @@ const config = {
       },
     ],
   },
+  output: {
+    path: path.resolve(__dirname, "build/"),
+    filename: "bundle.js",
+  },
   plugins: [
-    new MiniCSSExtractPlugin({
-      filename: "style.css",
-    }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
@@ -35,11 +37,19 @@ const config = {
         },
       ],
     }),
+    new HtmlWebpackPlugin({
+      inject: "body",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: false,
+      },
+      template: "./src/html/index.html",
+      title: "Webpack configuration",
+    }),
+    new MiniCSSExtractPlugin({
+      filename: "style.css",
+    }),
   ],
-  output: {
-    path: path.resolve(__dirname, "build/"),
-    filename: "bundle.js",
-  },
 };
 
 module.exports = config;
