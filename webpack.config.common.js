@@ -15,7 +15,7 @@ const cdn = env === "dev" ? cdnDev : cdnProd;
 
 const config = {
   entry: {
-    bundle: ["./src/css/style.css", "./src/index.js"],
+    bundle: ["./src/index.js"],
   },
   externals: {
     lodash: "_",

@@ -16,14 +16,14 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.(sa|sc|c)ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
   output: {
     path: path.resolve(__dirname, "build/"),
-    filename: "bundle.dev.js",
+    filename: "[name].dev.js",
   },
 };
 
