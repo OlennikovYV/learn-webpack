@@ -1,4 +1,4 @@
-// const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -15,7 +15,7 @@ const cdn = env === "dev" ? cdnDev : cdnProd;
 
 const config = {
   entry: {
-    myApp: ["./src/css/style.css", "./src/index.js"],
+    bundle: ["./src/css/style.css", "./src/index.js"],
   },
   externals: {
     lodash: "_",
@@ -45,6 +45,11 @@ const config = {
       analyzeMode: analyzeMode,
     }),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src/assest/data/"),
+    },
+  },
 };
 
 module.exports = config;

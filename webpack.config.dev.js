@@ -3,7 +3,6 @@ const commonConfig = require("./webpack.config.common");
 const { merge } = require("webpack-merge");
 
 const config = {
-  mode: "development",
   devServer: {
     devMiddleware: {
       writeToDisk: true,
@@ -13,10 +12,7 @@ const config = {
     server: "https",
   },
   devtool: "eval-cheap-source-map",
-  output: {
-    path: path.resolve(__dirname, "build/"),
-    filename: "bundle.dev.js",
-  },
+  mode: "development",
   module: {
     rules: [
       {
@@ -24,6 +20,10 @@ const config = {
         use: ["style-loader", "css-loader"],
       },
     ],
+  },
+  output: {
+    path: path.resolve(__dirname, "build/"),
+    filename: "bundle.dev.js",
   },
 };
 

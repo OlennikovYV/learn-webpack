@@ -1,2 +1,2 @@
 export const jsonObjectLoad = async () =>
-  import("../../../assest/data/data.json");
+  import(/* webpackChunkName: "load-data" */ "@/data.json");

@@ -13,12 +13,12 @@ const config = {
       },
     ],
   },
-  output: {
-    path: path.resolve(__dirname, "build/"),
-    filename: "[contenthash:8].js",
-  },
   optimization: {
     minimize: true,
+  },
+  output: {
+    path: path.resolve(__dirname, "build/"),
+    filename: "[name].[contenthash:8].js",
   },
   plugins: [
     new MiniCssExtractPlugin({
