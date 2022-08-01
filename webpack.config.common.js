@@ -1,17 +1,17 @@
-const path = require("path");
-const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const cdn = require("./src/js/cdn/cdn");
+
+const cdnDev = require("./src/js/cdn/cdn.dev");
+const cdnProd = require("./src/js/cdn/cdn.prod");
 
 const env = process.env.NODE_ENV;
-const cssLoaders =
-  env === "prod"
-    ? [MiniCSSExtractPlugin.loader, "css-loader"]
-    : ["style-loader", "css-loader"];
+const isAnalyze = !!process.env.ANALYZE;
+const analyzeMode = isAnalyze ? "server" : "disabled";
+const cdn = env === "dev" ? cdnDev : cdnProd;
 
 const config = {
   entry: {
@@ -20,25 +20,7 @@ const config = {
   externals: {
     lodash: "_",
   },
-  mode: "development",
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: cssLoaders,
-      },
-    ],
-  },
-  output: {
-    path: path.resolve(__dirname, "build/"),
-    filename: "[contenthash:8].js",
-  },
   plugins: [
-    new BundleAnalyzerPlugin({
-      openAnalyzer: true,
-      analyzeMode: "static",
-      reportFilename: "development_report.html",
-    }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
@@ -58,8 +40,9 @@ const config = {
       template: "./src/html/index.html",
       title: "Webpack configuration",
     }),
-    new MiniCSSExtractPlugin({
-      filename: "style.css",
+    new BundleAnalyzerPlugin({
+      openAnalyzer: isAnalyze,
+      analyzeMode: analyzeMode,
     }),
   ],
 };

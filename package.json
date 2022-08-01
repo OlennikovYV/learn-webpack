@@ -1,9 +1,10 @@
 {
-  "author": "",
+  "author": "OlennikovYV <olennikovyv@mail.ru>",
   "bugs": {
     "url": "https://github.com/OlennikovYV/learn-webpack/issues"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "webpack": "^5.74.0"
   },
   "description": "Learning webpack is a module bundler",
@@ -16,19 +17,24 @@
     "mini-css-extract-plugin": "^2.6.1",
     "style-loader": "^3.3.1",
     "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3",
+    "webpack-merge": "^5.8.0"
   },
   "homepage": "https://github.com/OlennikovYV/learn-webpack#readme",
   "keywords": [],
   "license": "ISC",
-  "main": "webpack.config.js",
+  "main": "bundle.js",
   "name": "learn-webpack",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OlennikovYV/learn-webpack.git"
   },
   "scripts": {
-    "build": "cross-env --env.NODE_ENV=prod webpack --config webpack.config.js"
+    "analyzeDev": "cross-env --env.NODE_ENV=dev --env.ANALYZE=true webpack serve --hot --config webpack.config.dev.js",
+    "analyzeProd": "cross-env --env.NODE_ENV=prod --env.ANALYZE=true webpack --config webpack.config.prod.js",
+    "build": "cross-env --env.NODE_ENV=prod webpack --config webpack.config.prod.js",
+    "dev": "cross-env --env.NODE_ENV=dev webpack serve --open --hot --config webpack.config.dev.js"
   },
   "version": "1.0.0"
 }

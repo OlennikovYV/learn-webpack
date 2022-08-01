@@ -6,5 +6,7 @@ Lodash.cloneDeep({});
 console.log(helloWebpack);
 
 document.getElementById("button").addEventListener("click", () => {
-  jsonObjectLoad().then((jsonObject) => console.log(jsonObject));
+  jsonObjectLoad().then((jsonObject) =>
+    console.dir(JSON.stringify(jsonObject))
+  );
 });
