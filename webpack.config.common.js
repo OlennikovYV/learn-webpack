@@ -15,17 +15,18 @@ const cdn = env === "dev" ? cdnDev : cdnProd;
 
 const config = {
   entry: {
-    bundle: ["./src/index.js"],
+    bundle: ["./index.js"],
   },
   externals: {
     lodash: "_",
   },
+  context: path.resolve(__dirname, "src"),
   plugins: [
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
         {
-          from: "public",
+          from: "../public",
           to: "",
         },
       ],
@@ -37,7 +38,7 @@ const config = {
         removeComments: true,
         collapseWhitespace: false,
       },
-      template: "./src/html/index.html",
+      template: "./html/index.html",
       title: "Webpack configuration",
     }),
     new BundleAnalyzerPlugin({
@@ -47,7 +48,7 @@ const config = {
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src/assest/data/"),
+      "@": path.resolve(__dirname, "./src/assest/data/"),
     },
   },
 };
