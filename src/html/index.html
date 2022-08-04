@@ -7,11 +7,17 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <h1 class="h1">My First Heading</h1>
+    <div class="container">
+      <div class="logo">
+        <img src="./images/svg/webpack.svg" alt="webpack logo" />
+        <p>Webpack config</p>
+      </div>
 
-    <p>My first paragraph.</p>
-
-    <button id="button" type="button">Click Me!</button>
+      <div class="json-load">
+        <button id="button" type="button">Load JSON object</button>
+        <div class="output_json"></div>
+      </div>
+    </div>
 
     <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
     <script type="text/javascript" src="<%=js%>"></script>

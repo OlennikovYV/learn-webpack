@@ -8,5 +8,9 @@ Lodash.cloneDeep({});
 console.log(helloWebpack);
 
 document.getElementById("button").addEventListener("click", () => {
-  jsonObjectLoad().then((jsonObject) => console.log(jsonObject.default));
+  jsonObjectLoad().then((jsonObject) => {
+    document.getElementsByClassName(
+      "output_json"
+    )[0].innerHTML = `<pre>${JSON.stringify(jsonObject.default, null, 2)}<pre>`;
+  });
 });
