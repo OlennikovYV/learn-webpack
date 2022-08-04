@@ -48,7 +48,7 @@ const config = {
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src/assest/data/"),
+      "@": path.resolve(__dirname, "./src/assets/data/"),
     },
   },
 };

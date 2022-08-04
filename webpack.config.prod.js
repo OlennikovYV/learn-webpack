@@ -22,7 +22,7 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "style.css",
+      filename: "css/style.css",
     }),
   ],
 };
