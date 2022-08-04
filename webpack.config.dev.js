@@ -7,8 +7,10 @@ const config = {
     devMiddleware: {
       writeToDisk: true,
     },
-    port: 8080,
     historyApiFallback: true,
+    hot: true,
+    open: true,
+    port: 8080,
     server: "https",
   },
   devtool: "eval-cheap-source-map",

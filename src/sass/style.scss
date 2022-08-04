@@ -1,25 +1,41 @@
-body,
-.container {
+$background-page: lightgray;
+$color-button: #8ed6fb;
+$color-border: #1c78c0;
+$size-logo: 64px;
+
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: $background-page;
   height: 100vh;
 }
 
 .logo {
   text-align: center;
+
+  &__img {
+    width: $size-logo;
+    height: $size-logo;
+  }
+
+  &__text {
+    font-size: 1.2em;
+  }
 }
 
-.logo img {
-  width: 64px;
-  height: 64px;
-}
-
-.h1 {
-  color: blue;
-}
-
-.json-load button {
-  outline: none;
+.json-load {
+  padding: 10px;
+  width: 140px;
+  height: 110px;
+  &__button {
+    display: block;
+    width: 125px;
+    padding: 5px;
+    margin: 0 auto;
+    border-color: $color-border;
+    background-color: $color-button;
+    outline: none;
+  }
 }

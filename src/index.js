@@ -10,7 +10,7 @@ console.log(helloWebpack);
 document.getElementById("button").addEventListener("click", () => {
   jsonObjectLoad().then((jsonObject) => {
     document.getElementsByClassName(
-      "output_json"
+      "json-load__output"
     )[0].innerHTML = `<pre>${JSON.stringify(jsonObject.default, null, 2)}<pre>`;
   });
 });
