@@ -2,6 +2,7 @@ const path = require("path");
 const commonConfig = require("./webpack.config.common");
 const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 const config = {
   mode: "production",
@@ -15,6 +16,11 @@ const config = {
   },
   optimization: {
     minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        test: /\.js$/,
+      }),
+    ],
   },
   output: {
     path: path.resolve(__dirname, "build/"),
